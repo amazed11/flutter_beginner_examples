@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:flutter623calculator/widgets/custom_textfield.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: Drawer(),
+      appBar: AppBar(
+        title: Text(
+          "Login App",
+        ),
+        centerTitle: true,
+      ),
+      body: Container(
+        child: Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.5,
+            width: MediaQuery.of(context).size.width * 0.75,
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(
+                20.0,
+              ),
+            ),
+            child: Container(
+              padding: EdgeInsets.all(
+                15.0,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildCustomTextField(
+                    hinttext: "Enter username",
+                    icon: Icons.person,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  buildCustomTextField(
+                    hinttext: "Enter password",
+                    icon: Icons.lock,
+                    obscuretext: true,
+                  ),
+                  SizedBox(height: 30.0),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      shape: StadiumBorder(),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 50.0,
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 19.0,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
