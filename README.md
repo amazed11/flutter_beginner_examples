@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+This project is created by Mr. Aashbin Sunar
+Full Stack Engineer, Developer
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
