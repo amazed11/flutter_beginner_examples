@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter623calculator/screens/todo/todo_screen.dart';
 import 'package:flutter623calculator/widgets/custom_textfield.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  HomeScreen({Key? key}) : super(key: key);
+  TextEditingController usernameEditingController = TextEditingController();
+  TextEditingController passwordEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                   buildCustomTextField(
                     hinttext: "Enter username",
                     icon: Icons.person,
+                    controller: usernameEditingController,
                   ),
                   SizedBox(
                     height: 20.0,
@@ -43,6 +46,7 @@ class HomeScreen extends StatelessWidget {
                     hinttext: "Enter password",
                     icon: Icons.lock,
                     obscuretext: true,
+                    controller: passwordEditingController,
                   ),
                   SizedBox(height: 30.0),
                   ElevatedButton(
@@ -53,7 +57,38 @@ class HomeScreen extends StatelessWidget {
                         horizontal: 50.0,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (usernameEditingController.text == "ram" &&
+                          passwordEditingController.text == "12345") {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (_) => TodoScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      } else {
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            title: Text(
+                              "Wrong crendentials",
+                            ),
+                            content: Text(
+                              "Please check your username or password",
+                            ),
+                            actions: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("Ok"),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    },
                     child: Text(
                       "Login",
                       style: TextStyle(
