@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter623calculator/screens/home/home_screen.dart';
 import 'package:flutter623calculator/screens/splash/splash_screen.dart';
 import 'package:flutter623calculator/screens/todo/todo_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +27,7 @@ class HomePage extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.deepPurple,
         accentColor: Colors.deepPurpleAccent,
+        fontFamily: GoogleFonts.roboto().fontFamily,
       ),
       home: TodoScreen(),
     );

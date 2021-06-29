@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter623calculator/screens/gridview/gridview_screen.dart';
 import 'package:flutter623calculator/screens/todo_details/todo_details_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TodoScreen extends StatefulWidget {
   const TodoScreen({Key? key}) : super(key: key);
@@ -12,10 +14,10 @@ class _TodoScreenState extends State<TodoScreen> {
   ToDo todo = ToDo([
     Data(
       id: 1,
-      task: "DO software work",
+      task: "केरा 🍌",
       priority: 1,
       description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an \$100 printer took a galley of type and scrambled it to make a type specimen book. \"It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\" It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       image:
           "https://urbanbazaar.com.np/wp-content/uploads/2021/04/transparent-bg-banana-300x225.png",
     ),
@@ -79,69 +81,73 @@ class _TodoScreenState extends State<TodoScreen> {
         title: Text("Todo Screen"),
       ),
       body: Container(
-        child: ListView.builder(
+        child: ListView.separated(
+            separatorBuilder: (context, i) => Divider(
+                  color: Colors.grey,
+                  thickness: 1.0,
+                ),
             itemCount: todo.data!.length,
             itemBuilder: (_, index) {
               return Container(
                 padding: EdgeInsets.all(
                   10.0,
                 ),
-                child: Card(
-                  elevation: 15.0,
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => TodoDetailsScreen(
-                            data: todo.data![index],
-                          ),
-                        ),
-                      );
-                    },
-                    title: Text("${todo.data![index].task}"),
-                    subtitle: Text(
-                      "${todo.data![index].description}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                    leading: Container(
-                      width: 100.0,
-
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          30.0,
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.contain,
-                          colorFilter: ColorFilter.mode(
-                            Colors.black45,
-                            BlendMode.darken,
-                          ),
-                          image: NetworkImage(
-                            "${todo.data![index].image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"}",
-                            scale: 1.0,
-                          ),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => TodoDetailsScreen(
+                          data: todo.data![index],
                         ),
                       ),
+                    );
+                  },
+                  title: Text("${todo.data![index].task}"),
+                  subtitle: Text(
+                    "${todo.data![index].description}",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                  leading: Container(
+                    width: 100.0,
 
-                      // child: Text(
-                      //   todo.data![index].priority == 1
-                      //       ? "H"
-                      //       : todo.data![index].priority == 2
-                      //           ? "M"
-                      //           : "L",
-                      // ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        30.0,
+                      ),
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black45,
+                          BlendMode.darken,
+                        ),
+                        image: NetworkImage(
+                          "${todo.data![index].image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"}",
+                          scale: 1.0,
+                        ),
+                      ),
                     ),
-                    trailing: Icon(
-                      Icons.arrow_right_alt_outlined,
-                    ),
+
+                    // child: Text(
+                    //   todo.data![index].priority == 1
+                    //       ? "H"
+                    //       : todo.data![index].priority == 2
+                    //           ? "M"
+                    //           : "L",
+                    // ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_right_alt_outlined,
                   ),
                 ),
               );
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => GridViewScreeen()));
+        },
         child: Icon(
           Icons.add,
         ),
