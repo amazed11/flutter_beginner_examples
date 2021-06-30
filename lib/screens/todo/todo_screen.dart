@@ -80,73 +80,108 @@ class _TodoScreenState extends State<TodoScreen> {
       appBar: AppBar(
         title: Text("Todo Screen"),
       ),
-      body: Container(
-        child: ListView.separated(
-            separatorBuilder: (context, i) => Divider(
-                  color: Colors.grey,
-                  thickness: 1.0,
-                ),
-            itemCount: todo.data!.length,
-            itemBuilder: (_, index) {
-              return Container(
-                padding: EdgeInsets.all(
-                  10.0,
-                ),
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => TodoDetailsScreen(
-                          data: todo.data![index],
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.75,
+              child: ListView.separated(
+                  separatorBuilder: (context, i) => Divider(
+                        color: Colors.grey,
+                        thickness: 1.0,
+                      ),
+                  shrinkWrap: true,
+                  itemCount: todo.data!.length,
+                  itemBuilder: (_, index) {
+                    return Container(
+                      padding: EdgeInsets.all(
+                        10.0,
+                      ),
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => TodoDetailsScreen(
+                                data: todo.data![index],
+                              ),
+                            ),
+                          );
+                        },
+                        title: Text("${todo.data![index].task}"),
+                        subtitle: Text(
+                          "${todo.data![index].description}",
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        leading: Container(
+                          width: 100.0,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              30.0,
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              colorFilter: ColorFilter.mode(
+                                Colors.black45,
+                                BlendMode.darken,
+                              ),
+                              image: NetworkImage(
+                                "${todo.data![index].image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"}",
+                                scale: 1.0,
+                              ),
+                            ),
+                          ),
+
+                          // child: Text(
+                          //   todo.data![index].priority == 1
+                          //       ? "H"
+                          //       : todo.data![index].priority == 2
+                          //           ? "M"
+                          //           : "L",
+                          // ),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_right_alt_outlined,
                         ),
                       ),
                     );
-                  },
-                  title: Text("${todo.data![index].task}"),
-                  subtitle: Text(
-                    "${todo.data![index].description}",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                  leading: Container(
-                    width: 100.0,
-
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        30.0,
-                      ),
-                      image: DecorationImage(
-                        fit: BoxFit.contain,
-                        colorFilter: ColorFilter.mode(
-                          Colors.black45,
-                          BlendMode.darken,
-                        ),
-                        image: NetworkImage(
-                          "${todo.data![index].image ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"}",
-                          scale: 1.0,
-                        ),
-                      ),
-                    ),
-
-                    // child: Text(
-                    //   todo.data![index].priority == 1
-                    //       ? "H"
-                    //       : todo.data![index].priority == 2
-                    //           ? "M"
-                    //           : "L",
-                    // ),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_right_alt_outlined,
+                  }),
+            ),
+          ),
+          Container(
+            color: Colors.black45,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.20,
+            child: Column(
+              children: [
+                Text(
+                  "Gridview Builder",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
                   ),
                 ),
-              );
-            }),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => GridViewScreeen(
+                                todo: todo,
+                              )));
+                    },
+                    icon: Icon(Icons.grid_goldenratio),
+                    label: Text("Gridview Builder"))
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => GridViewScreeen()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => GridViewScreeen(
+                    todo: todo,
+                  )));
         },
         child: Icon(
           Icons.add,
