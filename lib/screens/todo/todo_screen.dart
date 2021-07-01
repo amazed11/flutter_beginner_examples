@@ -51,7 +51,7 @@ class _TodoScreenState extends State<TodoScreen> {
           "https://urbanbazaar.com.np/wp-content/uploads/2021/06/Brahmaputra-Fresh-Colocasia-300x225.jpg",
     ),
     Data(
-      id: 1,
+      id: 5,
       task: "DO software work",
       priority: 1,
       description: "Company software works",
@@ -59,17 +59,17 @@ class _TodoScreenState extends State<TodoScreen> {
           "https://urbanbazaar.com.np/wp-content/uploads/2021/05/capsicum-300x225.jpg",
     ),
     Data(
-        id: 2,
+        id: 6,
         task: "DO mobile work",
         priority: 2,
         description: "Company mobile works"),
     Data(
-        id: 3,
+        id: 7,
         task: "DO hardware work",
         priority: 3,
         description: "Company hardware works"),
     Data(
-        id: 4,
+        id: 8,
         task: "DO web work",
         priority: 2,
         description: "Company web works"),
@@ -79,6 +79,43 @@ class _TodoScreenState extends State<TodoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Todo Screen"),
+      ),
+      drawer: Drawer(
+        child: Column(children: [
+          UserAccountsDrawerHeader(
+            currentAccountPicture: CircleAvatar(
+              radius: 30.0,
+              backgroundImage: NetworkImage(
+                  "https://urbanbazaar.com.np/wp-content/uploads/2021/06/malta-orange-500x500-1-300x225.png"),
+            ),
+            accountName: Text("Aashbin Sunar"),
+            accountEmail: Text(
+              "amazedking2@gmail.com",
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.read_more),
+            title: Text("About us"),
+          ),
+          ListTile(
+            leading: Icon(Icons.chat),
+            title: Text("Messafe"),
+          ),
+          ListTile(
+            leading: Icon(Icons.call),
+            title: Text("Conatct Us"),
+          ),
+          ListTile(
+            leading: Icon(Icons.support_agent),
+            title: Text("Support"),
+          ),
+          ListTile(
+            leading: Icon(Icons.help_center),
+            title: Text("Help"),
+          ),
+          Expanded(child: Container()),
+          Text("Powered by AMAZED"),
+        ]),
       ),
       body: Column(
         children: [
