@@ -99,11 +99,11 @@ class _TodoScreenState extends State<TodoScreen> {
           ),
           ListTile(
             leading: Icon(Icons.chat),
-            title: Text("Messafe"),
+            title: Text("Message"),
           ),
           ListTile(
             leading: Icon(Icons.call),
-            title: Text("Conatct Us"),
+            title: Text("Contact Us"),
           ),
           ListTile(
             leading: Icon(Icons.support_agent),
@@ -113,8 +113,11 @@ class _TodoScreenState extends State<TodoScreen> {
             leading: Icon(Icons.help_center),
             title: Text("Help"),
           ),
-          Expanded(child: Container()),
+          Spacer(),
           Text("Powered by AMAZED"),
+          SizedBox(
+            height: 15.0,
+          ),
         ]),
       ),
       body: Column(
