@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter623calculator/screens/home/home_screen.dart';
-import 'package:flutter623calculator/screens/splash/splash_screen.dart';
-import 'package:flutter623calculator/screens/text/text_widget_screen.dart';
-import 'package:flutter623calculator/screens/todo/todo_screen.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import 'screens/bottom_navigation/bottom_navigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: TextWidgetScreen(),
+      home: DisplayBottomNavigationBar(),
     );
   }
 }
