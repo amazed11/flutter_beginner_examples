@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'screens/bottom_navigation/bottom_navigation.dart';
+import 'screens/online_data/online_data_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: DisplayBottomNavigationBar(),
+      home: OnlinedataScreen(),
     );
   }
 }
