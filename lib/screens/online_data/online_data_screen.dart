@@ -58,6 +58,7 @@ class _OnlinedataScreenState extends State<OnlinedataScreen> {
       ),
       body: Container(
         child: Container(
+          height: 200.0,
           padding: EdgeInsets.all(
             20.0,
           ),
@@ -66,16 +67,30 @@ class _OnlinedataScreenState extends State<OnlinedataScreen> {
                   child: CircularProgressIndicator(),
                 )
               : ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
                   itemCount: apiData.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 10.0,
-                      child: ListTile(
-                        leading: CircleAvatar(
-                            child: Text("${apiData[index]['id']}")),
-                        title: Text("${apiData[index]['title']}"),
-                        subtitle: Text(
-                            "${(apiData[index]['body']).substring(1, 50)}"),
+                    return Container(
+                      width: 150.0,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 10.0,
+                        ),
+                        padding: EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xffe6e5e3),
+                              blurRadius: 20.0,
+                              spreadRadius: 1.0,
+                              offset: Offset(0, 0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text("${apiData[index]['title']}"),
                       ),
                     );
                   },
