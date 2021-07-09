@@ -14,10 +14,11 @@ class OnlineNewsApiScreen extends StatelessWidget {
         title: Text("Covid News Api"),
         actions: [
           IconButton(
-              onPressed: () {
-                newsController.getnewsdata();
-              },
-              icon: Icon(Icons.refresh)),
+            onPressed: () {
+              newsController.getnewsdata();
+            },
+            icon: Icon(Icons.refresh),
+          ),
         ],
       ),
       body: Container(

@@ -1,4 +1,6 @@
 import 'package:flutter623calculator/screens/online_data/model/news_model.dart';
+import 'package:flutter623calculator/screens/online_data/model/weather_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class ApiServices {
@@ -24,6 +26,25 @@ class ApiServices {
       if (response.statusCode == 200) {
         print(response.body);
         return newsModelFromJson(response.body);
+      } else {
+        print("sorry we cannot receive data");
+        return null;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+//weather services api
+  static Future<WeatherModel?> getWeather(var city) async {
+    try {
+      var key = dotenv.env['APP_KEY'];
+      var url = Uri.parse(
+          "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$key");
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        print(response.body);
+        return weatherModelFromJson(response.body);
       } else {
         print("sorry we cannot receive data");
         return null;
