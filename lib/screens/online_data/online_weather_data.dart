@@ -22,27 +22,30 @@ class WeatherScreen extends StatelessWidget {
             ),
             ElevatedButton.icon(
                 onPressed: () {
-                  print(controller.text);
-                  weatherController.getData(controller.text);
+                  // print(controller.text);
+                  // weatherController.getData(controller.text);
+                  ScaffoldMessenger(child: SnackBar(content: Text("adata")));
                 },
                 icon: Icon(Icons.remove_red_eye),
                 label: Text("Fetch")),
-            Obx(() => Expanded(
-                  child: weatherController.isLoading.value
-                      ? Center(child: CircularProgressIndicator())
-                      : Container(
-                          child: Column(
-                            children: [
-                              Text(
-                                  "${weatherController.weatherData.value.name}"),
-                              Text(
-                                  "${weatherController.weatherData.value.weather![0].main}"),
-                              Text(
-                                  "${weatherController.weatherData.value.weather![0].description}"),
-                            ],
-                          ),
+            Obx(
+              () => Expanded(
+                child: weatherController.isLoading.value == true
+                    ? Center(child: CircularProgressIndicator())
+                    : Container(
+                        child: Column(
+                          children: [
+                            Text(
+                                "${weatherController.weatherData.value.name ?? "No data"}"),
+                            Text(
+                                "${weatherController.weatherData.value.weather?[0].main ?? "no"}"),
+                            Text(
+                                "${weatherController.weatherData.value.weather?[0].description ?? "no data"}"),
+                          ],
                         ),
-                )),
+                      ),
+              ),
+            ),
           ],
         ),
       ),

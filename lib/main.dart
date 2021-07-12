@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter623calculator/screens/online_data/online_user_data_screen.dart';
 import 'package:flutter623calculator/screens/online_data/online_weather_data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,14 +29,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.deepPurple,
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: WeatherScreen(),
+      home: OnlineUser(),
     );
   }
 }
