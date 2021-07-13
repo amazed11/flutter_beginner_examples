@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "461019423904",
+    "project_id": "demofluttersignin-ca55a",
+    "storage_bucket": "demofluttersignin-ca55a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461019423904:android:ea309704e6b7be7dcd95c5",
+        "android_client_info": {
+          "package_name": "com.example.flutter623calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461019423904-ibievb3ob45or0etepjce63mci5qsdm4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter623calculator",
+            "certificate_hash": "a187d73ae4837fa13d622566aafb0464d96aa7bf"
+          }
+        },
+        {
+          "client_id": "461019423904-3ad1l4jm5tnamuoa9n69sbo57d7fuac3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATuCOICYb383usJNtSqFKOGtkjobeJYrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461019423904-3ad1l4jm5tnamuoa9n69sbo57d7fuac3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

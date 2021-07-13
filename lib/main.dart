@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter623calculator/screens/online_data/online_user_data_screen.dart';
 import 'package:flutter623calculator/screens/online_data/online_weather_data.dart';
@@ -9,8 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/bottom_navigation/bottom_navigation.dart';
 import 'screens/online_data/online_covid_news_screen.dart';
 import 'screens/online_data/online_data_screen.dart';
+import 'screens/signinwithgoogle/signinwithgoogle_screen.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
@@ -36,7 +40,7 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: OnlineUser(),
+      home: GoogleSigninScreen(),
     );
   }
 }
