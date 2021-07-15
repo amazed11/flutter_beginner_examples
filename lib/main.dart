@@ -10,12 +10,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'screens/bottom_navigation/bottom_navigation.dart';
 import 'screens/online_data/online_covid_news_screen.dart';
 import 'screens/online_data/online_data_screen.dart';
+import 'screens/push notification/push_notification_screen.dart';
 import 'screens/signinwithgoogle/signinwithgoogle_screen.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await dotenv.load(fileName: ".env");
+  
   runApp(MyApp());
 }
 
@@ -40,7 +43,7 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: GoogleSigninScreen(),
+      home: PushNotificationScreen(),
     );
   }
 }
