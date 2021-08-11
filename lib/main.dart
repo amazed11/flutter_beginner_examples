@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter623calculator/screens/online_data/online_user_data_screen.dart';
 import 'package:flutter623calculator/screens/online_data/online_weather_data.dart';
+import 'package:flutter623calculator/screens/webview/webview_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +16,10 @@ import 'screens/push notification/push_notification_screen.dart';
 import 'screens/signinwithgoogle/signinwithgoogle_screen.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await dotenv.load(fileName: ".env");
-  
+
   runApp(MyApp());
 }
 
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         fontFamily: GoogleFonts.roboto().fontFamily,
       ),
-      home: GoogleScreenMaps(),
+      home: WebviewScreen(),
     );
   }
 }
